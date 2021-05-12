@@ -3,11 +3,16 @@ import Image from 'next/image'
 import styles from './Layout.module.scss'
 import utilStyles from '../styles/utils.module.scss'
 import Link from 'next/link'
+import { PropsWithChildren } from 'react'
 
-const name = 'Your Name'
+const name = 'Ricardo Cardoso'
 export const siteTitle = 'Next.js Sample Website'
 
-export default function Layout({ children, home }) {
+type LayoutProps = PropsWithChildren<{
+  home?: boolean;
+}>;
+
+export const Layout = ({ children, home }: LayoutProps) => {
   return (
     <div className={styles.container}>
       <Head>
@@ -70,4 +75,4 @@ export default function Layout({ children, home }) {
       )}
     </div>
   )
-}
+};
