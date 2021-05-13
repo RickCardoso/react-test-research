@@ -1,0 +1,21 @@
+import React, { FC, ReactElement } from 'react';
+import { Typography } from '@loft/copan-components';
+import useStyles from './{{pascalCase name}}.styles';
+import { useIntl } from 'react-intl';
+
+export type {{pascalCase name}}Props = {
+  x: boolean;
+};
+
+export const {{pascalCase name}}: FC<{{pascalCase name}}Props> = (props: {{pascalCase name}}Props): ReactElement => {
+  const classes = useStyles(props);
+  const { messages } = useIntl();
+
+  return (
+    <div className={classes.root}>
+      <Typography variant="h4">{{titleCase name}}</Typography>
+    </div>
+  );
+};
+
+export default {{pascalCase name}};

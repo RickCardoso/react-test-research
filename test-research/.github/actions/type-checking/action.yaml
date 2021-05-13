@@ -1,0 +1,7 @@
+name: Run type checking
+
+runs:
+  using: "composite"
+  steps:
+    - run: make pipeline/test/type_check
+      shell: bash

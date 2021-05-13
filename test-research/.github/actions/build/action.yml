@@ -1,0 +1,7 @@
+name: Build code
+
+runs:
+  using: "composite"
+  steps:
+    - run: make pipeline/image/base/build
+      shell: bash

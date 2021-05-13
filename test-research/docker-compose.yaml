@@ -1,0 +1,21 @@
+version: '3.7'
+
+services:
+  e2etest:
+    image: web-starter-project:latest
+    build: .
+    ports: ['3000:3000']
+    command: npm run start
+
+  cypress:
+    depends_on:
+      - e2etest
+    image: cypress/included:5.6.0
+    environment:
+      LANG: pt_BR.UTF-8
+    volumes:
+      - ./src:/app/src
+      - ./cypress:/app/cypress
+    working_dir: /app
+    entrypoint: ""
+    command: bash -c "npm install axe-core cypress-axe && cypress run -C cypress/cypress.json -c baseUrl=http://e2etest:3000 --headless -b chrome --spec cypress/integration/**"

@@ -1,0 +1,7 @@
+name: Run unit test with coverage
+
+runs:
+  using: "composite"
+  steps:
+    - run: make pipeline/test/unit/coverage
+      shell: bash
