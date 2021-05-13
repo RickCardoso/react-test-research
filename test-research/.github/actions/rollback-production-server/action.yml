@@ -1,0 +1,15 @@
+name: Rollback Production Server Artifact
+inputs:
+  version:
+    description: Artifact version to rollback to (required)
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - uses: ./.github/loft/actions/rollback_production_server
+      env:
+        APP_ACCESS_KEY: ${{secrets.GONAN_O_DEPLOYER_AUTH_KEY}} # required (auth to use gonan-o-deployer server)
+      with:
+        - name: web-starter-project
+        - image: web-starter-project:base
+        - version: ${{github.event.inputs.version}}

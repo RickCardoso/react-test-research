@@ -1,0 +1,145 @@
+image:
+  name: 337161345835.dkr.ecr.us-east-1.amazonaws.com/eks-deployment:master
+  aws:
+    access-key: $AWS_ACCESS_KEY_ID
+    secret-key: $AWS_SECRET_ACCESS_KEY
+
+definitions:
+  services:
+    docker:
+      memory: 3072
+  steps:
+    - step: &type-checking
+        name: Type-checking
+        services:
+          - docker
+        caches:
+          - docker
+        script:
+          - make pipeline/test/type_check
+    - step: &code-lint
+        name: Linting code
+        services:
+          - docker
+        caches:
+          - docker
+        script:
+          - make pipeline/lint
+    - step: &unit-with-coverage
+        name: Unit tests
+        services:
+          - docker
+        caches:
+          - docker
+        script:
+          - make pipeline/test/unit/coverage
+        artifacts:
+          - "coverage/**"
+    - step: &e2e-tests
+        name: Running E2E tests
+        services:
+          - docker
+        script:
+          - make pipeline/test/e2e
+    - step: &sonar-report
+        name: Sonarcloud analysis
+        size: 2x
+        clone:
+          depth: full
+        script:
+          - pipe: sonarsource/sonarcloud-scan:1.2.1
+            variables:
+              SONAR_TOKEN: ${SONAR_TOKEN}
+              EXTRA_ARGS: '-Dsonar.sources=src -Dsonar.coverage.exclusions="**/*.spec.*" -Dsonar.test.inclusions="**/*.spec.*" -Dsonar.typescript.lcov.reportPaths=coverage/lcov.info'
+    - step: &git-lint
+        name: Running Git Linter
+        script:
+          - branchlint.sh
+          - commitlint.sh
+    - step: &build
+        name: Building Image
+        services:
+          - docker
+        caches:
+          - docker
+        script:
+          - deployer.sh pipeline/image/build
+        artifacts:
+          - '*.docker'
+    - step: &pull
+        name: Pull or build image
+        services:
+          - docker
+        script:
+          - deployer.sh pipeline/image/pull
+        artifacts:
+          - '*.docker'
+    - step: &push-image
+        services:
+          - docker
+        name: Pushing image
+        script:
+          - deployer.sh pipeline/image/push
+    - step: &deploy-staging
+        name: Deploying Stg Image
+        deployment: staging
+        script:
+          - deployer.sh pipeline/image/deploy
+    - step: &rollback-staging
+        name: Rollingback Stg Deploy
+        deployment: staging
+        script:
+          - deployer.sh pipeline/deploy/rollback
+    - step: &remove-staging
+        name: Removing Stg Deploy
+        deployment: staging
+        script:
+          - deployer.sh pipeline/deploy/remove
+    - step: &deploy-production
+        name: Deploying Prod Image
+        deployment: production
+        script:
+          - version_updater.sh
+          - deployer.sh pipeline/image/tag_version
+          - deployer.sh pipeline/image/deploy
+    - step: &rollback-production
+        name: Rollingback Prod Deploy
+        deployment: production
+        script:
+          - deployer.sh pipeline/deploy/rollback
+
+pipelines:
+  branches:
+    master:
+      - step: *pull
+      - parallel:
+        - step: *type-checking
+        - step: *code-lint
+        - step: *unit-with-coverage
+        - step: *e2e-tests
+      - parallel:
+        - step: *sonar-report
+  #      - step: *deploy-production
+  pull-requests:
+    '**':
+      - parallel:
+          - step: *git-lint
+          - step: *code-lint
+          - step: *type-checking
+          - step: *unit-with-coverage
+          - step: *build
+      - parallel:
+          - step: *push-image
+          - step: *sonar-report
+          - step: *e2e-tests
+  custom:
+     deploy-01-staging:
+       - step: *deploy-staging
+     deploy-02-production:
+       - step: *deploy-production
+     remove-01-staging:
+       - step: *remove-staging
+     rollback-01-staging:
+       - step: *rollback-staging
+     rollback-02-production:
+       - step: *rollback-production

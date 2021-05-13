@@ -1,0 +1,25 @@
+on:
+  workflow_dispatch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    needs: [sonar-report]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Checkout Loft Action Repository
+        uses: actions/checkout@v2
+        with:
+          repository: loft-br/actions
+          ref: main
+          token: ${{ secrets.GIT_HUB_TOKEN }} # stored in GitHub secrets (required)
+          path: .github/actions/loft
+      - uses: ./.github/actions/build
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - uses: ./.github/actions/loft/deploy_production_server
+        env:
+          APP_ACCESS_KEY: ${{ secrets.GONAN_O_DEPLOYER_AUTH_KEY }} # required (auth to use gonan-o-deployer server)
+        with:
+          name: web-starter-project
+          image: web-starter-project:base

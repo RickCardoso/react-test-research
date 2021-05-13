@@ -1,0 +1,294 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pages/index should render Index page correctly 1`] = `
+<DocumentFragment>
+  <header
+    class="CopanHeader-root-3 CopanHeader-fixedHeader-4"
+  >
+    <div
+      class="MuiGrid-root CopanGrid-container-15 lgMaxWidth MuiGrid-container"
+    >
+      <div
+        class="MuiGrid-root CopanGrid-item-16 verticalNoPadding CopanHeader-gridContainer-5 MuiGrid-item MuiGrid-grid-xs-12"
+      >
+        <div
+          class="CopanHeader-leftContainer-6"
+        >
+          <a
+            aria-label="Ir para página inicial da Loft"
+            class="CopanHeader-logo-7"
+            href="/"
+          >
+            <svg
+              class="MuiSvgIcon-root CopanHeader-mobileLogo-8"
+              color="#FF774A"
+              focusable="false"
+              role="img"
+              style="font-size: 32px;"
+              viewBox="0 0 140 119"
+            >
+              <g
+                fill-rule="evenodd"
+              >
+                <polygon
+                  points="139.879 44.876 131.05 44.876 131.05 28.52 118.437 28.52 118.437 98.567 131.05 98.567 131.05 57.384 139.879 57.384"
+                />
+                <path
+                  d="M90.6315856,119.840822 L78.018973,119.840822 L78.018973,27.6728524 C78.018973,12.9617512 90.087982,0.991235202 104.922937,0.991235202 L104.922937,13.4996113 C97.0425766,13.4996113 90.6315856,19.8576189 90.6315856,27.6728524 L90.6315856,119.840822 Z"
+                />
+                <path
+                  d="M71.6580365,44.8761224 L112.073027,44.8761224 L108.497351,57.3844985 L71.6580365,57.3844985 C68.8358742,68.510984 58.6626658,76.7724816 46.5798919,76.7724816 C32.3225946,76.7724816 20.724036,65.2697789 20.724036,51.1303105 C20.724036,36.9908421 32.3225946,25.4881394 46.5798919,25.4881394 C58.6626658,25.4881394 68.8358742,33.749637 71.6580365,44.8761224 Z M32.0753874,51.1303105 C32.0753874,59.0618718 38.5822342,65.514943 46.5798919,65.514943 C54.5775495,65.514943 61.0843964,59.0618718 61.0843964,51.1303105 C61.0843964,43.1987492 54.5775495,36.7456779 46.5798919,36.7456779 C38.5822342,36.7456779 32.0753874,43.1987492 32.0753874,51.1303105 Z"
+                />
+                <path
+                  d="M34.9076757,97.7300156 C15.6595676,97.7300156 -0.000252252253,82.1996158 -0.000252252253,63.1093321 L-0.000252252253,28.5199196 L12.6123604,28.5199196 L12.6123604,63.1093321 C12.6123604,75.3012464 22.6141622,85.2216395 34.9076757,85.2216395 L34.9076757,97.7300156 Z"
+                />
+              </g>
+              <title>
+                Loft
+              </title>
+            </svg>
+            <svg
+              class="MuiSvgIcon-root CopanHeader-desktopLogo-9"
+              color="#FF774A"
+              focusable="false"
+              role="img"
+              style="font-size: 40px;"
+              viewBox="0 0 140 119"
+            >
+              <g
+                fill-rule="evenodd"
+              >
+                <polygon
+                  points="139.879 44.876 131.05 44.876 131.05 28.52 118.437 28.52 118.437 98.567 131.05 98.567 131.05 57.384 139.879 57.384"
+                />
+                <path
+                  d="M90.6315856,119.840822 L78.018973,119.840822 L78.018973,27.6728524 C78.018973,12.9617512 90.087982,0.991235202 104.922937,0.991235202 L104.922937,13.4996113 C97.0425766,13.4996113 90.6315856,19.8576189 90.6315856,27.6728524 L90.6315856,119.840822 Z"
+                />
+                <path
+                  d="M71.6580365,44.8761224 L112.073027,44.8761224 L108.497351,57.3844985 L71.6580365,57.3844985 C68.8358742,68.510984 58.6626658,76.7724816 46.5798919,76.7724816 C32.3225946,76.7724816 20.724036,65.2697789 20.724036,51.1303105 C20.724036,36.9908421 32.3225946,25.4881394 46.5798919,25.4881394 C58.6626658,25.4881394 68.8358742,33.749637 71.6580365,44.8761224 Z M32.0753874,51.1303105 C32.0753874,59.0618718 38.5822342,65.514943 46.5798919,65.514943 C54.5775495,65.514943 61.0843964,59.0618718 61.0843964,51.1303105 C61.0843964,43.1987492 54.5775495,36.7456779 46.5798919,36.7456779 C38.5822342,36.7456779 32.0753874,43.1987492 32.0753874,51.1303105 Z"
+                />
+                <path
+                  d="M34.9076757,97.7300156 C15.6595676,97.7300156 -0.000252252253,82.1996158 -0.000252252253,63.1093321 L-0.000252252253,28.5199196 L12.6123604,28.5199196 L12.6123604,63.1093321 C12.6123604,75.3012464 22.6141622,85.2216395 34.9076757,85.2216395 L34.9076757,97.7300156 Z"
+                />
+              </g>
+              <title>
+                Loft
+              </title>
+            </svg>
+          </a>
+        </div>
+        <div
+          class="CopanHeader-navigationDesktop-14"
+        >
+          <nav
+            class="CopanNavigation-navigation-129 CopanHeader-navigation-10 CopanHeader-navigationWithoutAccessory-11"
+          >
+            <ul
+              class="CopanNavigation-baseList-130"
+            >
+              <li
+                class="CopanNavigationItem-item-132"
+              >
+                <a
+                  href="/"
+                  tabindex="0"
+                  target=""
+                >
+                  Home
+                </a>
+              </li>
+              <li
+                class="CopanNavigationItem-item-132"
+              >
+                <a
+                  href="/contact"
+                  tabindex="0"
+                  target=""
+                >
+                  Contato
+                </a>
+              </li>
+              <li
+                class="CopanNavigationItem-item-132"
+              >
+                <a
+                  href="/about"
+                  tabindex="0"
+                  target=""
+                >
+                  Sobre
+                </a>
+              </li>
+              <li
+                class="CopanNavigationItem-item-132 CopanNavigation-extraNavigation-131 hasSubItems more"
+              >
+                <span
+                  class="MuiTypography-root CopanTypography-root-153 CopanTypography-primary-133 CopanTypography-paragraph-md-146 MuiTypography-body1"
+                  tabindex="0"
+                >
+                  Mais 
+                  <svg
+                    class="CopanIcon-black-184"
+                    height="16px"
+                    viewBox="0 0 24 24"
+                    width="16px"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <title>
+                      CopanIcon
+                    </title>
+                    <path
+                      d="M12 14.61L17.3124 9.28995C17.6985 8.90335 18.3244 8.90335 18.7104 9.28995C19.0965 9.67656 19.0965 10.3034 18.7104 10.69L12.699 16.71C12.3612 17.0483 11.8398 17.0906 11.4561 16.8369C11.4012 16.8007 11.3492 16.7584 11.301 16.71L5.28954 10.69C4.90349 10.3034 4.90349 9.67656 5.28954 9.28995C5.67559 8.90335 6.3015 8.90335 6.68755 9.28995L12 14.61Z"
+                      fill="#191F23"
+                    />
+                  </svg>
+                </span>
+                <ul
+                  class=""
+                >
+                  <li
+                    class="CopanNavigationItem-item-132 more"
+                  >
+                    <a
+                      href="/"
+                      tabindex="0"
+                      target=""
+                    >
+                      Home
+                    </a>
+                  </li>
+                  <li
+                    class="CopanNavigationItem-item-132 more"
+                  >
+                    <a
+                      href="/contact"
+                      tabindex="0"
+                      target=""
+                    >
+                      Contato
+                    </a>
+                  </li>
+                  <li
+                    class="CopanNavigationItem-item-132 more"
+                  >
+                    <a
+                      href="/about"
+                      tabindex="0"
+                      target=""
+                    >
+                      Sobre
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <div
+          class="CopanHeader-extraComponent-13"
+        />
+        <div
+          class="CopanHeaderMobileControls-root-194"
+        >
+          <button
+            class="CopanHeaderMobileControls-toggleMenuIcon-195 CopanHeaderMobileControls-hiddenUntilSm-197"
+          >
+            <svg
+              class="CopanIcon-black-184"
+              height="24px"
+              viewBox="0 0 24 24"
+              width="24px"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <title>
+                CopanIcon
+              </title>
+              <path
+                d="M5.5 5C4.67157 5 4 5.67157 4 6.5C4 7.32843 4.67157 8 5.5 8H18.5C19.3284 8 20 7.32843 20 6.5C20 5.67157 19.3284 5 18.5 5H5.5Z"
+                fill="#191F23"
+              />
+              <path
+                d="M4 11.5C4 10.6716 4.67157 10 5.5 10H18.5C19.3284 10 20 10.6716 20 11.5C20 12.3284 19.3284 13 18.5 13H5.5C4.67157 13 4 12.3284 4 11.5Z"
+                fill="#191F23"
+              />
+              <path
+                d="M4 16.5C4 15.6716 4.67157 15 5.5 15H18.5C19.3284 15 20 15.6716 20 16.5C20 17.3284 19.3284 18 18.5 18H5.5C4.67157 18 4 17.3284 4 16.5Z"
+                fill="#191F23"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div
+    class="MuiGrid-root CopanGrid-container-15 lgMaxWidth makeStyles-withHeader-2 MuiGrid-container"
+  >
+    <div
+      class="MuiGrid-root CopanGrid-item-16 MuiGrid-item MuiGrid-grid-xs-12"
+    >
+      <div
+        class="makeStyles-hero-1"
+      >
+        <h1
+          class="MuiTypography-root CopanTypography-root-153 CopanTypography-inverted-136 CopanTypography-h1-139 MuiTypography-body1"
+        >
+          Mudar faz parte da gente
+        </h1>
+      </div>
+      <div
+        class="MuiGrid-root MuiGrid-container"
+      >
+        <div
+          class="MuiGrid-root CopanGrid-item-16 MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4 MuiGrid-grid-md-4"
+        >
+          <picture
+            class="CopanImage-root-198"
+          >
+            <source
+              srcset=""
+              type="image/webp"
+            />
+            <img
+              alt="Como funciona"
+              loading="lazy"
+              src=""
+              style="width: 100%;"
+            />
+          </picture>
+        </div>
+        <div
+          class="MuiGrid-root CopanGrid-item-16 MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-8 MuiGrid-grid-md-8"
+        >
+          <h2
+            class="MuiTypography-root CopanTypography-root-153 CopanTypography-primary-133 CopanTypography-subtitle-144 MuiTypography-body1"
+          >
+            Compre o próximo apartamento com atendimento exclusivo Loft e facilidade em cada etapa.
+          </h2>
+          <p
+            class="MuiTypography-root CopanTypography-root-153 CopanTypography-primary-133 CopanTypography-paragraph-md-146 MuiTypography-body1"
+          >
+            Mussum Ipsum, cacilds vidis litro abertis. Leite de capivaris, leite de mula manquis sem cabeça.
+                Praesent vel viverra nisi. Mauris aliquet nunc non turpis scelerisque, eget.
+                Admodum accumsan disputationi eu sit. Vide electram sadipscing et per.
+                Casamentiss faiz malandris se pirulitá. Mais vale um bebadis conhecidiss, que um alcoolatra anonimis.
+                Interagi no mé, cursus quis, vehicula ac nisi. Mé faiz elementum girarzis, nisi eros vermeio. Posuere libero varius.
+                Nullam a nisl ut ante blandit hendrerit. Aenean sit amet nisi. Todo mundo vê os porris que eu tomo, mas ninguém vê os tombis que eu levo!
+                Atirei o pau no gatis, per gatis num morreus. Diuretics paradis num copo é motivis de denguis. Quem num gosta di mim que vai caçá sua turmis!
+          </p>
+        </div>
+      </div>
+      <footer
+        class="makeStyles-footer-199"
+      >
+        <a
+          href="/about"
+          title="About"
+        >
+          Sobre
+        </a>
+      </footer>
+    </div>
+  </div>
+</DocumentFragment>
+`;

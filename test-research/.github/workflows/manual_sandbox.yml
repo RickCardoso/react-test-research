@@ -1,0 +1,11 @@
+on:
+  workflow_dispatch
+
+jobs:
+  deploy-server-sandbox:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./.github/actions/load-loft-actions
+      - uses: ./.github/actions/build
+      - uses: ./.github/actions/deploy-sandbox-server

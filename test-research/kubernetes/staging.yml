@@ -1,0 +1,70 @@
+app:
+  name: web-starter-project
+  environment: staging
+
+# Normally 4 for production and 2 for staging, workers use only 1 replica
+replicaCount: 2
+
+image:
+  repository: 337161345835.dkr.ecr.us-east-1.amazonaws.com/web-starter-project
+
+args:
+  - npm
+  - run
+  - start
+
+envs:
+  - name: NEW_RELIC_ENABLED
+    value: 'true'
+  - name: NEW_RELIC_LICENSE_KEY
+    value: 'from_bitbucket_deployment_variables'
+  - name: NEW_RELIC_APP_NAME
+    value: 'web-starter.web-starter-staging'
+  - name: NEW_RELIC_DISTRIBUTED_TRACING_ENABLED
+    value: 'true'
+  - name: NEW_RELIC_LOG_LEVEL
+    value: 'info'
+  - name: NEW_RELIC_NO_CONFIG_FILE
+    value: 'true'
+  - name: RUNTIME_ENV
+    value: 'staging'
+  # NODE_ENV is used for getting the current node env in build time
+  - name: NODE_ENV
+    value: 'production'
+  - name: PORT
+    value: '3000'
+
+service:
+  # Set to true only if you need another application to access this service
+  enabled: true
+  protocol: http
+  port: 3000
+  metrics:
+    path: /metrics/
+    port: 3000
+  healthcheck:
+    path: /health_check/
+    port: 3000
+    delay: 10
+    timeout: 30
+
+virtualservice:
+  # Set to true only if you must expose this server outside our cluster
+  enabled: true
+  # When enabled == false all other options inside virtualservice are ignored and can be removed
+  exposure: private
+  hosts:
+    - web-starter-project.stg.loft.technology
+  endpoint:
+    # Optional without trailing /
+    path:
+    # Optional
+    rewrite:
+
+resources:
+  limits:
+    cpu: 100m
+    memory: 256Mi
+  requests:
+    cpu: 50m
+    memory: 64Mi

@@ -1,0 +1,23 @@
+import React from 'react';
+import {{pascalCase name}} from './{{pascalCase name}}.component';
+import { render, screen } from '@testing-library/react';
+import { IntlProvider } from 'react-intl';
+import messages from 'lang/pt';
+
+
+const setup = () => render(
+	<IntlProvider locale="pt-br" messages={messages as any}>
+		<{{pascalCase name}} />
+	</IntlProvider>,
+);
+
+describe('{{pascalCase name}}: {{titleCase name}}', () => {
+	describe('Rendering', () => {
+		beforeEach(() => {
+      setup();
+    });
+		it('should render component elements', () => {
+			expect(screen.getByText('{{titleCase name}}')).toBeInTheDocument();
+		});
+	});
+});

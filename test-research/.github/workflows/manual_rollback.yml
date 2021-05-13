@@ -1,0 +1,37 @@
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Deploy version to rollback to
+        required: true
+      confirmation:
+        description: 'WARNING! This action will ONLY revert the image! Configs and secrets will remain the same. Continue (yes/no)?'
+        required: true
+        default: 'no'
+
+jobs:
+  rollback-server:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verify response
+        run: |
+          resp=${{ github.event.inputs.confirmation }}
+          if [ "${resp,,}" != "yes" ]; then
+            echo "Action cancelled"
+            exit 1
+          fi
+
+      - name: Checkout Loft Action Repository
+        uses: actions/checkout@v2
+        with:
+          repository: loft-br/actions
+          ref: main
+          token: ${{ secrets.GIT_HUB_TOKEN }} # stored in GitHub secrets (required)
+          path: .github/actions/loft
+      - uses: ./.github/loft/actions/rollback_production_server
+        env:
+          APP_ACCESS_KEY: ${{secrets.GONAN_O_DEPLOYER_AUTH_KEY}} # required (auth to use gonan-o-deployer server)
+        with:
+          - name: web-starter-project
+          - image: web-starter-project:base
+          - version: ${{ github.event.inputs.version }}

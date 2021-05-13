@@ -1,0 +1,64 @@
+on:
+  push:
+    branches-ignore: [main]
+
+jobs:
+  code-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./.github/actions/code-lint
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  type-checking:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./.github/actions/type-checking
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  unit-with-coverage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./.github/actions/unit-with-coverage
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GITHUB_WORKSPACE: ${{ github.workspace }}
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: coverage
+          path: coverage/
+
+  sonar-report:
+    runs-on: ubuntu-latest
+    needs: [code-lint, type-checking, unit-with-coverage]
+    steps:
+      # Needs "unit-with-coverage" to work
+      - uses: actions/checkout@v2
+        with:
+          # Disabling shallow clone is recommended for improving relevancy of reporting
+          fetch-depth: 0
+      - name: Download coverage artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: coverage
+          path: coverage
+      - name: SonarCloud Scan
+        uses: sonarsource/sonarcloud-github-action@master
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          args: >
+            -Dsonar.sources="src"
+            -Dsonar.exclusions="**/*.spec.*"
+            -Dsonar.tests="src/__tests__/"
+            -Dsonar.test.inclusions="**/*.spec.*"
+            -Dsonar.typescript.lcov.reportPaths="coverage/lcov.info"
+            -Dsonar.coverage.exclusions="**/node_modules/**/*"
+            -Dsonar.organization=loft-br
+            -Dsonar.projectKey=loft-br_web-starter-project

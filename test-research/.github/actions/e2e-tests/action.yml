@@ -1,0 +1,8 @@
+name: Tests end-to-end
+
+# Issue getting context when using composite: https://github.com/actions/runner/issues/665
+runs:
+  using: "composite"
+  steps:
+    - run: make pipeline/test/e2e
+      shell: bash
