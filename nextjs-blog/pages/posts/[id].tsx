@@ -1,8 +1,7 @@
 import Head from 'next/head'
 import { Layout } from '../../components/Layout'
-import { Date } from '../../components/Date'
+import { Post } from '../../components/Post'
 import { getAllPostIds, getPostData } from '../../lib/posts'
-import utilStyles from '../../styles/utils.module.scss'
 import { GetStaticPaths, GetStaticProps } from 'next'
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
@@ -22,21 +21,15 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-const Post = ({ postData }) => {
+const PostPage = ({ postData }) => {
   return (
     <Layout>
       <Head>
         <title>{postData.title}</title>
       </Head>
-      <article>
-        <h1 className={utilStyles.headingXl}>{postData.title}</h1>
-        <div className={utilStyles.lightText}>
-          <Date dateString={postData.date} />
-        </div>
-        <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
-      </article>
+      <Post post={postData} />
     </Layout>
   );
 };
 
-export default Post;
+export default PostPage;
