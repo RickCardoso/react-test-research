@@ -7,6 +7,7 @@ import { getFullName, IContact } from '../store/contact';
 
 export enum Pages {
   Home = 'home',
+  Posts = 'posts',
   Contact = 'contact',
   About = 'about',
 }
@@ -21,6 +22,7 @@ const _Header: FC<HeaderProps> = (props: HeaderProps): ReactElement => {
 
   const navigationItems = [
     { text: messages.home, href: '/' },
+    { text: messages.posts, href: '/posts' },
     { text: messages.contact, href: '/contact' },
     { text: messages.about, href: '/about' },
   ];
